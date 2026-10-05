@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>King Mafia Admin</title><link rel="stylesheet" href="style.css"></head><body>
+<section class="section"><div class="heading"><div><small>ADMIN</small><h2>Order Dashboard</h2></div><div class="status">● Demo mode</div></div>
+<div id="orders" class="faq"></div></section>
+<script>
+const orders=JSON.parse(localStorage.getItem("km_orders")||"[]");
+const box=document.querySelector("#orders");
+if(!orders.length) box.innerHTML="<details open><summary>No demo orders yet</summary><p>Orders created from the checkout can be stored here after backend integration.</p></details>";
+orders.forEach((o,i)=>box.innerHTML+=`<details><summary>#${i+1} — ${o.package} — ${o.status}</summary><p>Player ID: ${o.playerId}<br>Player: ${o.playerName||"-"}<br>Price: ${o.price}<br>Created: ${o.created}</p></details>`);
+</script></body></html>
